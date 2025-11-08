@@ -2,34 +2,54 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Видимый и Невидимый Текст</title>
+    <title>Верх и Низ</title>
     <style>
-        /* По умолчанию, весь фон и текст белые */
-        body {
-            background-color: #FFFFFF; /* Белый фон */
-            color: #FFFFFF;            /* Белый (невидимый) текст */
-            font-family: sans-serif;
+        /* Убираем отступы по умолчанию и растягиваем body на всю высоту */
+        html, body {
+            height: 100%;
+            margin: 0;
         }
 
-        /* * Этот класс мы будем применять к элементам, 
-         * которые должны быть видимыми (черными).
+        /* * Устанавливаем белый фон.
+         * Используем Flexbox, чтобы разделить контент:
+         * 1. flex-direction: column - располагаем элементы друг под другом.
+         * 2. justify-content: space-between - расталкиваем первый элемент (бред) 
+         * наверх, а последний (невидимый текст) - вниз.
         */
-        .visible {
-            color: #000000; /* Черный цвет текста */
+        body {
+            background-color: #FFFFFF; /* Белый фон */
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Класс для видимого контента (черный текст) */
+        .visible-content {
+            color: #000000; /* Черный текст */
+            padding: 25px;
+        }
+
+        /* Класс для невидимого контента (белый текст) */
+        .hidden-content {
+            color: #FFFFFF; /* Белый текст (невидимый на белом фоне) */
+            padding: 25px;
         }
     </style>
 </head>
 <body>
 
-    <h1>Это невидимый заголовок</h1>
-    
-    <p>Этот параграф написан белым тексом на белом фоне. Вы не должны его видеть.</p>
-    
-    <p>Чтобы увидеть этот текст, попробуйте выделить его с помощью мыши.</p>
+    <div class="visible-content">
+        <h1>Lorem Ipsum Dolor Sit</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat.</p>
+        <p>Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim.</p>
+    </div>
 
-    <hr> <h1 class="visible">Это обычный, видимый заголовок</h1>
-    
-    <p class="visible">Этот параграф вы можете прочитать, потому что к нему применен класс "visible", который делает текст черным.</p>
+    <div class="hidden-content">
+        <h2>Это секретный заголовок</h2>
+        <p>Этот текст находится в самом низу страницы, и его не видно. Привет!</p>
+        <p>Чтобы увидеть меня, выдели все мышкой (Ctrl+A или Cmd+A).</p>
+    </div>
 
 </body>
 </html>
